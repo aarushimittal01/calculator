@@ -1,4 +1,4 @@
-package calculate
+package operation
 
 func Add(x, y int) int {
 	return x + y
@@ -19,5 +19,7 @@ func Multiply(x, y int) int {
 func Divide(x, y int) int {
 	if y != 0 {
 		return x / y
-	} else return 0
+	} else {
+		return 0
+	}
 }

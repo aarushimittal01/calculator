@@ -2,35 +2,41 @@ package main
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/aarushimittal01/calculator/calculate"
-	"github.com/aarushimittal01/calculator/menu"
+	"calculator/menu"
+	"calculator/operation"
 )
 
 func main() {
-	var val int = 0
+	var val int
 
-	for val != 5 && val < 6 {
-		menu.Show_menu()
-		fmt.Scanln(&val)
-		fmt.Println("Input 2 Numbers\n")
+	fmt.Printf(menu.Show_menu())
+	fmt.Scanln(&val)
+
+	for val != 5 && val < 5 {
+		fmt.Printf("Input 2 Numbers\n")
 		var num1, num2, ans int
 		fmt.Scanln(&num1, &num2)
 
 		switch val {
 		case 1:
-			ans = calculate.Add(num1, num2)
+			ans = operation.Add(num1, num2)
 		case 2:
-			ans = calculate.Subtract(num1, num2)
+			ans = operation.Subtract(num1, num2)
 		case 3:
-			ans = calculate.Multiply(num1, num2)
+			ans = operation.Multiply(num1, num2)
 		case 4:
-			ans = calculate.Divide(num1, num2)
+			ans = operation.Divide(num1, num2)
 			if ans == 0 {
-				fmt.Println("Cannot Divide by 0")
+				fmt.Println("\nCannot Divide by 0")
 				val = 5
 			}
+		default:
+			os.Exit(1)
 		}
-		fmt.Println("Answer is : %v", ans)
+		fmt.Printf("\nAnswer is : %v", ans)
+		fmt.Printf(menu.Show_menu())
+		fmt.Scanln(&val)
 	}
 }
